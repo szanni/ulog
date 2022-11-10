@@ -1,8 +1,9 @@
 ulog
 ====
 
-_ulog_ is a simple, thread safe logging library written in C99.
+_ulog_ is a simple, cross platform, and thread safe logging library written in C99.
 
+Supported platforms are Windows and all Unix systems supporting at least POSIX 2001 (Linux, macOS, BSDs, ...).
 
 Usage
 -----

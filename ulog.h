@@ -19,12 +19,21 @@
  *
  * 3. This notice may not be removed or altered from any source distribution.
  */
-/* ulog version 0.0.0 */
+/* ulog version 0.1.0 */
 
 #ifndef ULOG_H
 #define ULOG_H
 
+#ifdef _WIN32
+#define ULOG_LOCKFILE _lock_file
+#define ULOG_UNLOCKFILE _unlock_file
+#else
+#ifndef _POSIX_C_SOURCE
 #define _POSIX_C_SOURCE 200112L
+#endif
+#define ULOG_LOCKFILE flockfile
+#define ULOG_UNLOCKFILE funlockfile
+#endif // _WIN32
 #include <stdio.h>
 #include <stdarg.h>
 #include <errno.h>
@@ -80,7 +89,7 @@ _ulog(int log_level, const char *file, int line, int err, const char *format, ..
 	if (log_level < ULOG_LOG_LEVEL)
 		return;
 
-	flockfile(stderr);
+	ULOG_LOCKFILE(stderr);
 	{
 #if ULOG_PRINT_ERRNO > 0
 		fprintf(stderr, "%s [%s] <%s:%d>: ", _ulog_log_level_string[log_level], strerror(err), file, line);
@@ -95,7 +104,7 @@ _ulog(int log_level, const char *file, int line, int err, const char *format, ..
 
 		fprintf(stderr, "%c", '\n');
 	}
-	funlockfile(stderr);
+	ULOG_UNLOCKFILE(stderr);
 }
 
 #endif // ULOG_C
