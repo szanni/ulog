@@ -33,7 +33,7 @@
 #endif
 #define ULOG_LOCKFILE flockfile
 #define ULOG_UNLOCKFILE funlockfile
-#endif // _WIN32
+#endif //_WIN32
 #include <stdio.h>
 #include <stdarg.h>
 #include <errno.h>
@@ -58,7 +58,7 @@ _ulog(int log_level, const char *file, int line, int err, const char *format, ..
 #define ulog_error(...) _ulog(ULOG_ERROR, __FILE__, __LINE__, errno, __VA_ARGS__)
 #define ulog_fatal(...) _ulog(ULOG_FATAL, __FILE__, __LINE__, errno, __VA_ARGS__)
 
-#endif // ULOG_H
+#endif //ULOG_H
 
 #ifdef ULOG_IMPLEMENTATION
 #ifndef ULOG_C
@@ -107,6 +107,6 @@ _ulog(int log_level, const char *file, int line, int err, const char *format, ..
 	ULOG_UNLOCKFILE(stderr);
 }
 
-#endif // ULOG_C
-#endif // ULOG_IMPLEMENTATION
+#endif //ULOG_C
+#endif //ULOG_IMPLEMENTATION
 
