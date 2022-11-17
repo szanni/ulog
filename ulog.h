@@ -45,7 +45,8 @@ enum {
 	ULOG_INFO,
 	ULOG_WARN,
 	ULOG_ERROR,
-	ULOG_FATAL
+	ULOG_FATAL,
+	ULOG_OFF
 };
 
 void
