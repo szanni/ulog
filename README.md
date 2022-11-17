@@ -24,9 +24,17 @@ prior to including `ulog.h` in **one** of your `.c` files.
 #include "ulog.h"
 ```
 
-There are multiple compile time configuration parameters that can be set. Either
-do this by `#define` in your source code prior to `ULOG_IMPLEMENTATION` or
+#### Options
+
+There are multiple compile time configuration parameters that can be set. You may either
+do this by specifying a `#define` in your source code prior to `ULOG_IMPLEMENTATION` or
 via a compiler directive.
+
+- `ULOG_LOG_LEVEL` specifies the minimum log level.
+  Available log levels are: `ULOG_TRACE`, `ULOG_DEBUG`, `ULOG_INFO`, `ULOG_WARN`, `ULOG_ERROR`, `ULOG_FATAL`.
+  The default is `ULOG_TRACE`. Logging can be disabled by specifying `ULOG_OFF`.
+- `ULOG_PRINT_ERRNO` specifies whether or not to print `errno` from `<stderr.h>`. Set `0` to not print,
+  `1` to print.
 
 ```c
 #define ULOG_LOG_LEVEL ULOG_TRACE
@@ -34,11 +42,6 @@ via a compiler directive.
 #define ULOG_IMPLEMENTATION
 #include "ulog.h"
 ```
-
-- `ULOG_LOG_LEVEL` specifies the minimum log level.
-  Available log levels are: `ULOG_TRACE`, `ULOG_DEBUG`, `ULOG_INFO`, `ULOG_WARN`, `ULOG_ERROR`, `ULOG_FATAL`.
-- `ULOG_PRINT_ERRNO` specifies whether or not to print `errno` from `<stderr.h>`. `0` to not print,
-  `1` to print.
 
 ### Logging
 
