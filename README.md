@@ -34,7 +34,7 @@ via a compiler directive.
   Available log levels are: `ULOG_TRACE`, `ULOG_DEBUG`, `ULOG_INFO`, `ULOG_WARN`, `ULOG_ERROR`, `ULOG_FATAL`.
   The default is `ULOG_TRACE`. Logging can be disabled by specifying `ULOG_OFF`.
 - `ULOG_PRINT_ERRNO` specifies whether or not to print `errno` from `<stderr.h>`. Set `0` to not print,
-  `1` to print.
+  `1` to print. The default is `0`.
 
 ```c
 #define ULOG_LOG_LEVEL ULOG_TRACE
